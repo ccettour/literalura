@@ -20,8 +20,16 @@ public class Autor {
 
     public Autor(AutorData autorData) {
         this.nombre = autorData.nombre();
-        this.anioNacimiento = Integer.valueOf(autorData.anioNacimiento());
-        this.anioMuerte = Integer.valueOf(autorData.anioMuerte());
+        if(autorData.anioNacimiento()!=null){
+            this.anioNacimiento = Integer.valueOf(autorData.anioNacimiento());
+        } else {
+            this.anioNacimiento = null;
+        }
+        if(autorData.anioMuerte()!=null){
+            this.anioMuerte = Integer.valueOf(autorData.anioMuerte());
+        } else {
+            this.anioMuerte = null;
+        }
     }
 
     public Autor() {}
@@ -81,7 +89,7 @@ public class Autor {
     @Override
     public String toString() {
         String autor;
-        if(nombre.equalsIgnoreCase("desconocido")){
+        if((anioNacimiento == null) & (anioMuerte == null)){
             autor=nombre;
         } else {
             autor= nombre + " (" + anioNacimiento + "-" + anioMuerte + ")";
